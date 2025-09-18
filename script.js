@@ -595,10 +595,111 @@ function initScrollProgress() {
         
         progressBar.style.width = scrollPercentage + '%';
     });
+    // Sponsorship functionality
+function initSponsorship() {
+    const amountButtons = document.querySelectorAll('.amount-btn');
+    const customAmountInput = document.getElementById('custom-amount');
+    const paystackButton = document.getElementById('paystack-button');
+    
+    let selectedAmount = 100; // Default amount
+    
+    // Amount button selection
+    amountButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            amountButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Update selected amount
+            selectedAmount = parseInt(button.dataset.amount);
+            
+            // Clear custom amount input
+            customAmountInput.value = '';
+        });
+    });
+    
+    // Custom amount input
+    customAmountInput.addEventListener('input', (e) => {
+        const value = parseInt(e.target.value);
+        if (!isNaN(value) && value >= 10) {
+            selectedAmount = value;
+            
+            // Remove active class from amount buttons
+            amountButtons.forEach(btn => btn.classList.remove('active'));
+        }
+    });
+    
+    // Paystack payment handler
+    paystackButton.addEventListener('click', () => {
+        if (selectedAmount < 10) {
+            showNotification('Please enter a minimum amount of GHS 10', 'error');
+            return;
+        }
+        
+        processPayment(selectedAmount);
+    });
+}
+
+function processPayment(amount) {
+    // Replace with your actual Paystack public key and payment details
+    const paystackPublicKey = 'pk_your_public_key_here'; // Your Paystack public key
+    
+    const handler = PaystackPop.setup({
+        key: paystackPublicKey,
+        email: 'donor@example.com', // You might want to collect this
+        amount: amount * 100, // Convert to kobo (Paystack expects amount in kobo)
+        currency: 'GHS',
+        ref: 'QELEC_SPONSOR_' + Math.floor((Math.random() * 1000000000) + 1),
+        metadata: {
+            custom_fields: [
+                {
+                    display_name: "Sponsorship Type",
+                    variable_name: "sponsorship_type",
+                    value: "General Donation"
+                }
+            ]
+        },
+        callback: function(response) {
+            // Payment successful
+            showNotification('Thank you for your sponsorship! Payment was successful.', 'success');
+            trackDonation(amount, response.reference);
+        },
+        onClose: function() {
+            showNotification('Payment window closed. If you meant to sponsor us, please try again.', 'error');
+        }
+    });
+    
+    handler.openIframe();
+}
+
+function trackDonation(amount, reference) {
+    // Here you would typically send this data to your backend
+    console.log(`Donation tracked: GHS ${amount}, Reference: ${reference}`);
+    
+    // You can send this to Google Analytics, your database, etc.
+    // Example:
+    // fetch('/api/track-donation', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ amount, reference })
+    // });
+}
+
+// Add to initializeApp function
+function initializeApp() {
+    // ... existing code ...
+    initSponsorship();
+}
+
+// Make functions globally available
+window.processPayment = processPayment;
 }
 
 // Make functions globally available
 window.showForm = showForm;
 window.showStemApplication = showStemApplication;
 window.closeModalAndScrollToContact = closeModalAndScrollToContact;
+
 window.showNotification = showNotification;
