@@ -1379,6 +1379,350 @@ body {
     background: rgba(255, 255, 255, 0.2);
 }
 
+/* Sponsorship Section */
+.sponsorship {
+    padding: 6rem 2rem;
+    background: linear-gradient(135deg, var(--off-white) 0%, #e8ecef 100%);
+}
+
+.sponsorship-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sponsorship-content {
+    text-align: center;
+}
+
+.sponsorship h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-blue);
+    position: relative;
+    display: inline-block;
+}
+
+.sponsorship h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-blue);
+}
+
+.sponsorship-intro {
+    font-size: 1.3rem;
+    color: var(--medium-gray);
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+}
+
+/* Sponsorship Benefits */
+.sponsorship-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 5rem;
+}
+
+.benefit-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 86, 179, 0.15);
+    border-color: var(--primary-blue);
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.benefit-card h3 {
+    color: var(--dark-blue);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.benefit-card p {
+    color: var(--light-gray);
+    line-height: 1.7;
+}
+
+/* Sponsorship Levels */
+.sponsorship-levels {
+    margin-bottom: 5rem;
+}
+
+.sponsorship-levels h3 {
+    font-size: 2rem;
+    color: var(--dark-blue);
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+}
+
+.levels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.level-card {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.level-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--accent-teal));
+}
+
+.level-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 86, 179, 0.15);
+}
+
+.level-card h4 {
+    color: var(--dark-blue);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.level-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.level-card li {
+    color: var(--light-gray);
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.level-card li:before {
+    content: '✓';
+    color: var(--success);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Sponsorship CTA */
+.sponsorship-cta {
+    background: var(--white);
+    padding: 3.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.sponsorship-cta h3 {
+    color: var(--dark-blue);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.sponsorship-cta > p {
+    color: var(--light-gray);
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+}
+
+.amount-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.amount-btn {
+    background: var(--off-white);
+    border: 2px solid var(--off-white);
+    color: var(--medium-gray);
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.amount-btn:hover,
+.amount-btn.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+    transform: translateY(-2px);
+}
+
+.custom-amount {
+    margin-bottom: 2.5rem;
+}
+
+.custom-amount label {
+    display: block;
+    color: var(--dark-gray);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.amount-input {
+    position: relative;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.currency {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--medium-gray);
+    font-weight: 600;
+    z-index: 1;
+}
+
+.amount-input input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 2px solid var(--off-white);
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.amount-input input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+.sponsor-cta-button {
+    background: linear-gradient(135deg, var(--accent-teal), #006666);
+    color: var(--white);
+    border: none;
+    padding: 1.5rem 3rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 6px 20px rgba(0, 128, 128, 0.3);
+}
+
+.sponsor-cta-button:hover {
+    background: linear-gradient(135deg, #006666, var(--accent-teal));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 128, 128, 0.4);
+}
+
+.sponsor-cta-button:active {
+    transform: translateY(-1px);
+}
+
+.security-note {
+    color: var(--light-gray);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.security-note i {
+    color: var(--success);
+}
+
+/* Responsive Design for Sponsorship */
+@media (max-width: 768px) {
+    .sponsorship {
+        padding: 4rem 1.5rem;
+    }
+    
+    .sponsorship h2 {
+        font-size: 2.3rem;
+    }
+    
+    .sponsorship-intro {
+        font-size: 1.1rem;
+    }
+    
+    .sponsorship-benefits {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .levels-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .sponsorship-cta {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .amount-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .amount-input {
+        max-width: 100%;
+    }
+    
+    .sponsor-cta-button {
+        padding: 1.2rem 2rem;
+        font-size: 1.1rem;
+    }
+}
 .notification button:hover {
     background: rgba(255, 255, 255, 0.3);
+
 }
